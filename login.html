@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validating Email and Password</title>
+    <style>
+        body {
+            padding: 0px;
+            margin: 0px;
+            background-color: #F1F3F6;
+            font-family: 'Roboto', sans-serif;
+
+        }
+
+        .main_section {
+            box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .08);
+            margin: 0px auto;
+            width: 300px;
+            padding: 50px;
+            background: #ffff;
+            margin-top: 30px;
+            height: 300px;
+        }
+
+        .main_section .email {
+            padding: 15px;
+        }
+
+        #submit_btn {
+            background: #FB641B;
+            color: #fff;
+            border: none;
+            padding: 15px;
+            width: 150px;
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        #valid,
+        #correct {
+            color: #00ff00;
+        }
+
+        #invalid,
+        #incorrect {
+            color: #ff0000;
+        }
+
+        .main_section input[type=text] {
+            padding: 10px;
+            margin: 10px auto;
+            width: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main_section">
+
+        <div class="form_sec">
+            <label for="email" class="email">Email</label>
+            <input id="email_feild" type="text" placeholder="Enter Email ID" /><br>
+            <p id="correct"></p>
+            <p id="incorrect"></p>
+            <label for="password">Password</label>
+            <input id="psd" type="text" placeholder="Enter Password" />
+
+            <p id="valid"></p>
+            <p id="invalid"></p>
+            <span class="not"></span>
+            <input id="submit_btn" type="submit" value="Login" onclick="loginUser()" />
+        </div>
+
+    </div>
+    <script type="text/javascript">
+
+        function loginUser() {
+
+            if (emailValidation() && passwordValidation()) {
+                var users = [
+                    {
+
+                    },
+                    {
+
+                    }
+                ]
+
+                if (true) {
+                    window.location.href = './dashboard.html';
+                }
+            }
+
+        }
+
+        function emailValidation() {
+            var email_pattern = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+            input_email = document.getElementById("email_feild");;
+            if (input_email.value.match(email_pattern)) {
+                return true;
+            }
+            else {
+                document.getElementById("incorrect").innerHTML = "Please Enter valid email-ID";
+                return false;
+            }
+        }
+
+        function passwordValidation() {
+            var password_pattern = /^(?=.*[-\#\$\.\%\&\@\!\+\=\\*])(?=.*[a-zA-Z])(?=.*\d).{8,12}$/;
+            input_psd = document.getElementById("psd");
+
+            if (input_psd.value.match(password_pattern)) {
+                return true;
+            }
+            else {
+                document.getElementById("invalid").innerHTML = "Invalid password must be 8-12 length,1 Spl& 1 ALP";
+                return false;
+            }
+        }
+    </script>
+</body>
+
+</html>
